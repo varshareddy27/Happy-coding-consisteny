@@ -1,3 +1,120 @@
 1.5 Recursion
 2.1 sorting 1 bubble,selection,insertion sort
 2.2 sorting 2.2 merge,uick sort,recursive bubble sort and recursive inserrtion sort
+gooals
+
+1) Fibonacci Series in Java
+2) Prime Number Program in Java
+3) Palindrome Program in Java
+4) Factorial Program in Java
+5) Armstrong Number in Java
+6) How to Generate Random Number in Java
+7) How to Print Pattern in Java
+8) How to Compare Two Objects in Java
+9) How to Create Object in Java
+10) How to Print ASCII Value in Java
+
+Divisors:
+------------------
+import java.util.*;
+import java.lang.*;
+public class Main
+{
+    
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+		for(int i=2;i<Math.sqrt(n);i++){
+		    if(n%i==0){
+		        System.out.println(i);
+		    }
+		    if(n/i!=i){
+		        System.out.println(n/i);
+		    }
+		}
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+nth prime number
+import java.util.*;
+import java.lang.*;
+public class Main
+{public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);  
+System.out.print("Enter the value of n to compute the nth prime number: ");  
+int n = sc.nextInt(); 
+int c=0;
+int num=1,i;
+while(c<n){
+    num=num+1;
+    for(i=2;i<=num;i++){
+        if(num%i==0){break;}}
+    
+    if(i==num){
+        c=c+1;
+    }
+}
+
+    System.out.println(num);
+    
+}}
+
+--------------------------------------------------------------------------------------------------------
+string is palindrome are not
+import java.util.*;
+import java.lang.*;
+public class Main
+{public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);  
+String ch = sc.next(); 
+int num=ch.length();
+String ispal="palindrome";
+for(int i=0;i<num;i++){
+    if(ch.charAt(i)!=ch.charAt(ch.length()-i-1)){
+        ispal="not palindome";
+    }
+    }
+System.out.print(ispal);
+}}
+--------------------------------------------------------------------------------------------------------------------------------
+factorial 
+1)for loop
+import java.util.*;
+import java.lang.*;
+public class Main
+{
+    public static int fact(int n){
+        if(n==0){
+            return 1;
+        }
+         return(n * fact(n-1));    
+       
+    }
+    public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);  
+int n;
+
+n=sc.nextInt();
+System.out.println(fact(n));
+
+}}
+----------------------------------------------------------------------------
+copy of element in an array
+import java.util.*;
+import java.lang.*;
+public class Main
+{
+    public static void main(String[] args) {
+int a[]={1,2,3,4,2,23};
+int t[]=new int [20];
+for(int i=0;i<a.length;i++){
+    t[i]=a[i];
+}
+for(int i=0;i<a.length;i++){
+    System.out.print(a[i]+" ");
+}
+
+}}
+
+-----------------------------------------------------------------------------
+
