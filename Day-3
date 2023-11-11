@@ -61,5 +61,85 @@ public class Main
     }
 }
 -----------------------------------------------------------------------------------------
+ public class Reverse   
+{    
+    public static void main(String[] args) {    
+        String string = "Dream big";    
+        String reversedStr = "";       
+        for(int i = string.length()-1; i >= 0; i--){    
+            reversedStr = reversedStr + string.charAt(i);    
+        }    
+        System.out.println("Original string: " + string);    
+        System.out.println("Reverse of given string: " + reversedStr);    
+    }    
+}                        orr
 
+
+import java.util.*;
+import java.lang.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    String str=sc.next();
+	    String s=str;
+	    String rev="";
+	    for(int i=str.length()-1;i>=0;i--){
+	        rev=rev+str.charAt(i);
+	    }
+        if(rev.equals(s)){
+            System.out.print("palin");
+            
+        }
+        else{
+            System.out.print("not  a palin");
+        }
+    }
+}
+
+
+----------------------------------------------------------------------------------
+count the no of characters
+import java.util.*;
+import java.lang.*;
+public class Main
+{
+	public static void main(String[] args) {    
+	    Scanner sc=new Scanner(System.in);
+	    String str=sc.nextLine();   
+        int count = 0;    
+        for(int i = 0; i < str.length(); i++) {    
+            if(str.charAt(i) != ' ')    
+                count++;    
+        }    
+        System.out.println("Total number of characters in a string: " + count);    
+    }    
+}
+------------------------------------------------------------------------------
+count of vowels and consosants
+import java.util.*;
+import java.lang.*;
+public class Main
+{
+	public static void main(String[] args) {    
+	    Scanner sc=new Scanner(System.in);
+	    String str=sc.nextLine();   
+        str=str.toLowerCase();
+        int v=0,c=0;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)=='a'||str.charAt(i)=='e'||str.charAt(i)=='i'||str.charAt(i)=='o'||str.charAt(i)=='u')
+        {
+                v++;
+            }
+            else if(str.charAt(i)>='a'&&str.charAt(i)<='z'){
+                c++;
+                
+            }
+        }
+            System.out.println(v);
+            System.out.print(c);
+        
+    }    
+}
+-----------------------------------------------------------------------------------------------------------------------------------
 
