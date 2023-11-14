@@ -121,5 +121,72 @@ public class Main
 	        System.out.println("not abd");
 	    }
 	       }}
-		    
+		--------------------------------------------------
+number,upper,lower.digit
+import java.util.Scanner;
+
+public class CharacterTypeChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a character: ");
+        char inputChar = scanner.next().charAt(0);
+
+        int asciiValue = (int) inputChar;
+
+        if (asciiValue >= 65 && asciiValue <= 90) {
+            System.out.println("Uppercase letter");
+        } else if (asciiValue >= 97 && asciiValue <= 122) {
+            System.out.println("Lowercase letter");
+        } else if (asciiValue >= 48 && asciiValue <= 57) {
+            System.out.println("Number");
+        } else {
+            System.out.println("Symbol");
+        }
+
+        scanner.close();
+    }
+}
+---------------------
+Dora is very much interested in gardening and she decides to plant more trees in her garden. She plants trees in the order of rows and columns. She numbered the trees in column wise order. She planted the mango trees only in the second column from both first and last. But later when the trees grew up, she forgot where she planted mango trees. So help her find out whether the given tree number is a number of mango trees or not. Display whether “It is a mango tree” or “It is not a mango tree”.
+
+Input Format
+
+Input consists of 3 integers. First input corresponds to the number of rows. Second input corresponds to the number of columns. Third input corresponds to the tree number.
+
+Constraints
+
+None
+
+Output Format
+
+print mentioned output
+
+Sample Input 0
+
+5
+5
+20
+Sample Output 0
+
+It is a mango tree
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+  Scanner scanner = new Scanner(System.in);
+        int rows = scanner.nextInt();
+        int columns = scanner.nextInt();
+        int treeNumber = scanner.nextInt();
+        if ((treeNumber % columns == 2 ||treeNumber%columns == 0)&&
+            (treeNumber >= 2 && treeNumber <= (rows * columns - 1) && treeNumber % columns != 1)) {
+            System.out.println("It is a mango tree");
+        } else {
+            System.out.println("It is not a mango tree");
+        }
+    }
+}
 
