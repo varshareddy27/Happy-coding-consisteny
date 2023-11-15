@@ -1,0 +1,411 @@
+prime factors
+  12--2,3
+    21--3,7
+      import java.util.*;
+public class Main
+{public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int flag=0;
+		int i=2;
+		while(n>1){
+		    while(n%i==0){
+		        n=n/i;
+		        flag=1;
+		    }
+		   
+		    if(flag==1){
+		        System.out.println(i);
+		        flag=0; }
+		    i++;
+		}}}
+------------------------------------------------------------------------------------------------------------------
+  hackerrank:-
+    no of years,months,weeks
+  import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int y=n/365;
+		n=n%365;
+		int w=n/7;
+		n=n%7;
+		System.out.print(y+" "+w+" "+n);
+		
+	}
+}
+-------------------------------------------------------------------
+  n th fib i/p 3
+  import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int a=0,c;
+        int b=1,k=0,flag=0;
+        while(n>=k){
+            c=a+b;
+            a=b;
+            b=c;
+            k++;
+            if(c==n||a==n||b==n){
+                flag=1;
+                break;
+            }
+            
+        }
+        
+    if(flag==1){
+                System.out.println("Fibonacci Number");
+            }
+            else{
+                System.out.println("Not Fibonacci Number");
+            }
+    }
+}
+---------------------------------
+  WAP to convert Binary Number to Decimal Number.
+
+Input Format
+
+Input consists of a single number.
+
+Constraints
+
+None
+
+Output Format
+
+Print the Decimal format of given number
+
+Sample Input 0
+
+1010
+Sample Output 0
+
+10
+  import java.io.*;
+import java.util.*;
+import java.lang.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int r,i=0,s=0;
+        while(n!=0){
+            r=n%10;
+            s=s+r*(int)Math.pow(2,i);
+            i++;
+            n/=10;
+        }
+        System.out.print(s);
+    }
+}
+----------------------------------------------------
+  WAP to check given number is Evil or not?. An Evil number is a non-negative number that has an even number of 1s in its binary expression.
+
+Input Format
+
+Take a single line of input from the user
+
+Constraints
+
+none
+
+Output Format
+
+print "Evil Number" or "Not an Evil Number" based on the input.
+
+Sample Input 0
+
+15
+Sample Output 0
+
+Evil Number
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+         Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int b[]=new int[100];
+        int i=0,c=0;
+        while(n!=0){
+            b[i]=n%2;
+            n/=2;
+            i++;
+        }
+        for(int j=i-1;j>=0;j--){
+            if(b[j]==1){
+                c++;
+            }
+            
+        }
+        if(c%2==0){
+            System.out.print("Evil Number");
+        }
+        else{
+            System.out.print("Not an Evil Number");
+        }
+    }
+}
+---------------------------------
+  write a program to check whether the given number is Magic Number or Not. A Number is a Magic Number when ((Sum of all digits from the given number) × (reverse of the sum of digits))=. Given Number.
+
+Input Format
+
+take a single line of input from the user
+
+Constraints
+
+none
+
+Output Format
+
+print "Magic Number" or "Not a Magic Number" based on the input.
+
+Sample Input 0
+
+1729
+Sample Output 0
+
+Magic Number
+Submissions: 41
+Max Score: 10
+Difficulty: Medium
+Rate This Challenge:
+
+    
+More
+ 
+1
+import java.io.*;
+2
+import java.util.*;
+3
+​
+4
+public class Solution {
+5
+​
+6
+    public static void main(String[] args) {
+7
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+8
+          Scanner sc = new Scanner(System.in);
+9
+        int n = sc.nextInt();
+10
+        int num = n;
+11
+        int s= 0;
+12
+        while (n != 0) {
+13
+            int r = n % 10;
+14
+            s+= r;
+15
+            n /= 10;
+16
+        }
+17
+​
+18
+        int os =s;
+19
+        int sd = 0;//sum of digits
+20
+while (s != 0) {
+21
+            int r=s%10;
+22
+            sd=sd*10+r;
+23
+            s/= 10;
+24
+        }
+25
+        if (os*sd==num) {
+26
+            System.out.println("Magic Number");
+27
+        } else {
+28
+            System.out.println("Not a Magic Number");
+29
+        }
+30
+    }
+31
+}
+-------------------------------
+  ap to check given number is pronic number or not A Number is a Pronic number which is the product of two consecutive integers, that is, a number of the form num(num+1).
+    i/p 90
+  import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+         Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+        boolean t=false;
+        int i=2;
+        while(i<=n/2){
+            if(i*(i+1)==n){
+                t=true;
+                break;
+            }
+            i++;
+            }
+        if(t==true){
+            System.out.print("Pronic Number");
+        }
+        else{
+            System.out.print("Not a Pronic Number");
+        }
+    }
+} or
+  public class Solution {
+
+    public static boolean isPronicNumber(int num) {
+        for (int i = 0; i <= (int) Math.sqrt(num); i++) {
+            if (num == i * (i + 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        for (int i = 0; i <= 200; i++) {
+            if (isPronicNumber(i)) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
+
+--------------------------------------
+  wap to check given number is disarium number or not. A Number is a Disarium number if the sum of the digits powered with their respective positions is equal to the number itself.
+
+Input Format
+
+take a single line of input from the user
+
+Constraints
+
+none
+
+Output Format
+
+print "Disarium Number" or "Not a Disarium Number"
+
+Sample Input 0
+
+135
+Sample Output 0
+
+Disarium Number
+  import java.io.*;
+import java.util.*;
+import java.lang.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int s=0,r;
+        int num=n;
+        int d=0;
+        int t=n;
+        while(n!=0){
+            
+            n/=10;d++;
+            }
+        while(t!=0){
+            r=t%10;
+            s=s+(int)Math.pow(r,d);
+            d--;
+            t/=10;
+        }
+        if(s==num){
+            System.out.print("Disarium Number");
+        }
+        else{
+            System.out.print("Not a Disarium Number");
+        }
+        
+    }
+}
+--------------------------
+  Wap to print neon number or not. A Number is a Neon Number if the sum of digits of square of the number is equal to the number itself.
+
+Input Format
+
+take a single line of input from the user
+
+Constraints
+
+none
+
+Output Format
+
+print "Neon Number" or "Not a Neon Number"
+
+Submissions: 42
+Max Score: 10
+Difficulty: Medium
+Rate This Challenge:
+
+    
+More
+
+  import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+       Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int num =n;
+        int s=0,r,p=0;
+     if (n<0) {
+            System.out.print("Not a Neon Number");
+        } else {
+            while (n != 0) {
+                r =n%10;
+                s+=r*r;
+                n /=10;
+            }
+while(s!=0){
+    r=s%10;
+    p=p+r;
+    s/=10;
+}
+            if (p == num) {
+                System.out.print("Neon Number");
+            } else {
+                System.out.print("Not a Neon Number");
+            }}
+    }
+}
