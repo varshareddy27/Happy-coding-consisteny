@@ -1,0 +1,21 @@
+sum of digits until you find a single digit
+tc-1 1234 1   tc-2 123 6   tc-3   1972     1
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int s=0;
+		while(n>9){s=0;
+		    while(n!=0){
+		        s=s+n%10;
+		        n/=10;
+		    }
+		    n=s;
+		}
+		System.out.println(n);
+	}
+}
+----------------------------------------------------------------
+
