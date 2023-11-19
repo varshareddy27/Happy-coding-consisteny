@@ -1,0 +1,61 @@
+-->if we want to print % then we use double times %%
+-->Write a program to display ascii value of a character in int,float,byte and short datatypes.the input consists of a single character 'ch' representing uper caseor lower case alphabet
+import java.util.Scanner;
+
+public class AsciiValues {
+    public static void main(String[] args) {
+        // Taking input from the user
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a character: ");
+        char ch = scanner.next().charAt(0);
+        scanner.close();
+        // Displaying ASCII values in different data types
+        int intValue = (int) ch;
+        float floatValue = (float) ch;
+        byte byteValue = (byte) ch;
+        short shortValue = (short) ch;
+        System.out.println("Character: " + ch);
+        System.out.printf("ASCII value %d \n", intValue);
+        System.out.println("ASCII value (float): " + floatValue);
+        System.out.println("ASCII value (byte): " + byteValue);
+        System.out.println("ASCII value (short): " + shortValue);
+    }
+else{
+sop("invalid");
+}
+---------------------------------
+-->%.2f
+percentage=bramd/total;
+---------------------------------------------
+Given a list of non-negative integers nums, arrange them such that they form the largest number and return it.
+
+Since the result may be very large, so you need to return a string instead of an integer.
+
+ 
+
+Example 1:
+
+Input: nums = [10,2]
+Output: "210"
+Given a list of non-negative integers nums, arrange them such that they form the largest number and return it.
+Since the result may be very large, so you need to return a string instead of an integer.
+Example 1:
+
+Input: nums = [10,2]
+Output: "210"
+class Solution {
+    public String largestNumber(int[] nums) {
+        int n=nums.length;
+        String s[]=new String[n];
+        for(int i=0;i<n;i++)
+            s[i]=String.valueOf(nums[i]);// String.valueOf():- it converts integer to a string
+        Arrays.sort(s,(a,b)->(b+a).compareTo(a+b) );//compare all posibble string
+        StringBuilder sb=new StringBuilder();
+        for(String str:s)
+            sb.append(str);
+        String r=sb.toString();//converts string builder to normal string
+        return r.startsWith("0")?"0":r;
+        
+    }
+}
+----------------------------------------
