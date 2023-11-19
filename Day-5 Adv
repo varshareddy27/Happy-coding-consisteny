@@ -189,4 +189,27 @@ public class Solution {
         }
     }
 }
+--------------------------------------------------------------
+program to swap first and last digit of a number
+tc-1 1234
+o/p   4231
+
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int d=(int)Math.log10(n);
+		int f=n/(int)Math.pow(10,d);
+		int l=n%10;
+		int a=f*(int)Math.pow(10,d);
+		int b=n%a;
+		n=b/10;//for middle elements 23
+		int r=l*(int)Math.pow(10,d)+n*10+f;
+		System.out.println(r);
+	}
+}
+-----------------------------------------------------------------------
 
