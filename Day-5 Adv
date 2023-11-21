@@ -212,4 +212,54 @@ public class Main
 	}
 }
 -----------------------------------------------------------------------
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int a[]=new int [4];
+		int b[]=new int [4];
+		int r,i=0;
+		while(n!=0){
+		    r=n%2;
+		    n/=2;
+		    a[i]=r;
+		    i++;
+		}int j=0;
+		for(int k=a.length-1;k>=0;k--){
+		    b[j]=a[k];
+		    j++;
+		}
+		for(int m=0;m<b.length;m++){
+		    System.out.print(b[m]);
+		}
+	}
+}
+
+optimise this
+ChatGPT
+Your code is already quite concise, but we can simplify it a bit. Instead of using two arrays (a and b), you can directly print the binary digits without storing them in a separate array. Also, you can use a for loop to print the elements in reverse order directly. Here's an optimized version:
+
+java
+Copy code
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        for (int i = 31; i >= 0; i--) {
+            System.out.print((n >> i) & 1);
+        }
+    }
+}
+In this version, I'm using bitwise operations (>> and &) to extract individual bits from the integer n. The loop runs from 31 to 0 (since integers in Java are 32 bits), and it prints the binary representation of the number without the need for arrays.
+
+
+
+
+
+
 
