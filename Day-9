@@ -1,0 +1,299 @@
+/*rev n1 rev n2 sum and rev
+import java.util.*;
+public class Main
+{
+    public static int rev(int n) {
+        int reve=0;
+	 while(n!=0){
+	     reve=reve*10+n%10;
+	     n/=10;
+	 }
+	 return reve;
+	}
+	public static int sum(int a,int b) {
+	    return a+b;
+	    
+	}
+    
+	public static void main(String[] args) {
+	
+	 Scanner sc=new Scanner(System.in);
+	 int n1=sc.nextInt();
+	 int n2=sc.nextInt();
+	int r1=rev(n1);
+	 int r2=rev(n2);
+	int res=sum(r1,r2);
+	 System.out.print(rev(res));
+	}
+}
+*/
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {27, 29, 52133, 1009, 12};
+         System.out.println("0");
+         
+        applyDigitOperation(numbers);
+     
+       
+    }
+
+    public static void applyDigitOperation(int[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            int numDigits = countDigits(numbers[i]);
+           
+            int digitSumBefore = sumOfDigits(numbers[i]);
+            
+            if (numDigits % 2 == 0) {
+                numbers[i] += 10;
+            } else {
+                numbers[i] -= 10;
+            }
+            
+            int digitSumAfter = sumOfDigits(numbers[i]);
+           
+            System.out.println( numDigits);
+            System.out.println();
+        }
+    }
+    public static int countDigits(int number) {
+         if (number == 0) {
+            return 1; 
+        }
+
+        int absNumber = Math.abs(number);
+        return (int) Math.floor(Math.log10(absNumber) + 1);
+    }
+    
+    public static int sumOfDigits(int number) {
+       int sum=0;
+       
+        int absNumber = Math.abs(number);
+        int numDigits = (int) Math.floor(Math.log10(absNumber) + 1);
+
+        for (int i = 0; i < numDigits; i++) {
+            sum += absNumber % 10;
+            absNumber /= 10;
+        }
+
+        return sum;
+    }
+
+    
+    
+}
+----
+import java.util.*;
+public class Main
+{
+    public static int fib(int n){
+       
+        if(n==0||n==1){
+            return 1;
+        }
+        System.out.print(fib(n-1)+fib(n-2));
+        return fib(n-1)+fib(n-2);
+        
+    }
+   public static void main(String[] args) {
+      
+       	Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    System.out.print(fib(n));
+    
+   }
+}
+/* fact,fib,n fib
+ import java.util.*;
+public class Main
+{
+    public static int fact(int n){
+       
+        if(n==0||n==1){
+            return 1;
+        }
+        return n*fact(n-1);
+        
+    }
+   public static void main(String[] args) {
+      
+       	Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    System.out.print(fact(n));
+    
+   }
+}
+*/
+/*import java.util.*;
+public class Main
+{
+    public static int fib(int n){
+       
+        if(n==0||n==1){
+            return 1;
+        }
+        System.out.println(fib(n-1)+fib(n-2));
+        return fib(n-1)+fib(n-2);
+        
+    }
+   public static void main(String[] args) {
+      
+       	Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    System.out.print(fib(n));
+    
+   }
+}
+*/
+
+/*import java.util.*;
+public class Main
+{
+    public static int gcd(int n){
+       
+        
+    }
+   public static void main(String[] args) {
+      
+    
+   }
+}
+*/
+import java.util.*;
+public class Main
+{
+    public static float add(float ...a){
+        float s=0;
+        for(float i:a){
+            s+=i;
+        }
+        return s;
+        }
+   	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    float a[]=new float[n];
+    for(int i=0;i<n;i++){
+        a[i]=sc.nextFloat();
+       
+    }
+     System.out.println(add(a));
+   	}
+}
+
+/*
+import java.util.*;
+public class Main
+{
+    public static int add(int x,int y){
+        return x+y;    }
+        public static int add(int x,int y,int z){
+        return x+y+z;    }
+        
+   	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+    int x=add(10,20);
+    int y=add(10,20,30);
+    System.out.println(x);
+    System.out .println(y);
+   	}
+}
+
+
+*/
+
+/*import java.util.*;
+public class Main
+{
+    public static void printf(int a,int b[]){
+        System.out.println(a);
+        for(int i=0;i<b.length;i++){
+            System.out.print(" "+b[i]);
+        }
+    }
+     public static void modify(int a,int b[]){
+         a=2*a;
+         for(int i=0;i<b.length;i++){
+            if(b[i]%2==0){
+               b[i]=b[i]+10; 
+            }
+            else{
+                b[i]=b[i]-10; 
+            }
+         }
+         for(int i=0;i<b.length;i++){
+            System.out.print(" "+b[i]);
+        }
+         
+     }
+    
+	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+	int b[]=new int[5];
+	for(int i=0;i<5;i++){
+	    b[i]=sc.nextInt();
+	}
+	printf(n,b);
+	modify(n,b);
+	printf(n,b);
+	
+	}
+}
+*/
+/*Reverse of a number using recursion
+import java.util.*;
+public class Main
+{
+    int rev=0;
+    public static int reverse(int n, int rev) {
+        if (n == 0) {
+            return rev;
+        }
+        rev = rev * 10 + n % 10;
+        return reverse(n / 10, rev);
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		System.out.print(reverse(n,0));
+	}
+}
+*/
+//sum of digits
+/*import java.util.*;
+public class Main
+{
+    int s=0;
+    public static int sum(int n, int s) {
+        if(n==0){
+            return s;
+        }
+        s=s+n%10;
+        return sum(n/10,s);
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		System.out.print(sum(n,0));
+	}
+}
+*/
+// number of digits
+/*
+import java.util.*;
+public class Main
+{
+    public static int num(int n,int c){
+        if(n==0){
+            return c;
+        }
+        c++;
+        return num(n/10,c);
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		System.out.print(num(n,0));
+	}
+}*/
+leetcode
