@@ -1,0 +1,90 @@
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+You must write an algorithm with O(log n) runtime complexity.
+Example 1:
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+Explanation: 9 exists in nums and its index is 4
+Example 2:
+Input: nums = [-1,0,3,5,9,12], target = 2
+Output: -1
+Explanation: 2 does not exist in nums so return -1
+class Solution {
+    public int search(int[] nums, int target) {
+        int l=0;
+        int h=nums.length-1;
+        while(l<=h){
+            int mid=(l+h)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid]>target){
+                h=mid-1;
+            }
+            else{
+                l=mid+1;
+            }
+        }
+        return -1;
+    }
+}
+-------------------------------------------------------------------------------------------------
+Trim():-n Java, the trim() method is a built-in method in the String class, and it is used to remove leading and trailing whitespace (spaces, tabs, and newline characters) from a string. The original string is not modified; instead, a new string is returned with the leading and trailing whitespace removed.
+String original = "   Hello, World!   ";
+String trimmed = original.trim();
+
+System.out.println("Original: '" + original + "'");
+System.out.println("Trimmed: '" + trimmed + "'");
+Output:
+
+vbnet
+Copy code
+Original: '   Hello, World!   '
+Trimmed: 'Hello, World!'
+58. Length of Last Word
+Easy
+
+4294
+
+219
+
+Add to List
+
+Share
+Given a string s consisting of words and spaces, return the length of the last word in the string.
+
+A word is a maximal substring consisting of non-space characters only.
+
+ 
+
+Example 1:
+
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.
+Example 2:
+
+Input: s = "   fly me   to   the moon  "
+Output: 4
+Explanation: The last word is "moon" with length 4.
+Example 3:
+
+Input: s = "luffy is still joyboy"
+Output: 6
+Explanation: The last word is "joyboy" with length 6.
+class Solution {
+    public int lengthOfLastWord(String s) {
+        String str=s.trim();
+        int c=0;
+        for(int i=str.length()-1;i>=0;i--){
+            if(str.charAt(i)!=' '){
+              c++;
+            }
+            
+            else{
+               break;
+            }
+        }
+        return c;
+    }
+}
+-------------------------------
