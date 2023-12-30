@@ -1,0 +1,29 @@
+191.Number of 1 Bits
+  Input: n = 00000000000000000000000000001011
+Output: 3
+Explanation: The input binary string 00000000000000000000000000001011 has a total of three '1' bits.
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int c=0;
+        while(n!=0){
+            n=n&(n-1);
+            c++;
+        }
+        return c;
+    }
+}
+ or
+   public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int c=0;
+        while(n!=0){
+            if((n&1)==1){
+                c++;
+            }
+            n=n>>>1;--->check works for unsigned
+        }
+        return c;
+    }
+}
