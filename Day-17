@@ -1,0 +1,70 @@
+31-12-23
+an array has all three repeated numbers and one single number find that number using bit manipulation
+public class SingleNumber {
+    public static int findSingleNumber(int[] nums) {
+        int result = 0;
+        // Iterate through each bit position
+        for (int i = 0; i < 32; i++) {
+            int count = 0;
+            // Count the number of set bits at the current position for all numbers
+            for (int num : nums) {
+                count += (num >> i) & 1;
+            }
+            // If the count is not a multiple of 3, set the bit in the result
+            if (count % 3 != 0) {
+                result |= (1 << i);
+            }
+        }
+        return result;
+    }
+    public static void main(String[] args) {
+        int[] nums = {2, 2, 3, 2, 3, 3, 7};
+        int result = findSingleNumber(nums);
+        System.out.println("The single number is: " + result);
+    }
+}
+------------------------------------------
+find the nth magic no with base 5
+1->5
+2-->25
+3-->30
+4-->100
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int c=0;
+	int 	base=5;
+		int a=1;
+		while(n>0){
+		    if((n&1)==1){
+		    c=c+(int)Math.pow(5,a);
+		    }
+		    n=n>>1;
+		    a++;
+		}
+		System.out.print(c);
+	}
+}
+or
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int c=0;
+		int last;
+	int base=5;
+		while(n>0){
+		    last=n&1;
+		c=c+base*last;
+		base=base*5;
+		    n=n>>1;
+		}
+		System.out.print(c);
+	}
+}
+--------------------------------
