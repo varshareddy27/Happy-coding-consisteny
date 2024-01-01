@@ -109,7 +109,107 @@ public class Main
 	}
 }
 ----------------------------------
-  
+  190. Reverse Bits
+Easy
+
+4917
+
+1344
+
+Add to List
+
+Share
+Reverse bits of a given 32 bits unsigned integer.
+
+Note:
+
+Note that in some languages, such as Java, there is no unsigned integer type. In this case, both input and output will be given as a signed integer type. They should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.
+In Java, the compiler represents the signed integers using 2's complement notation. Therefore, in Example 2 above, the input represents the signed integer -3 and the output represents the signed integer -1073741825.
+ 
+
+Example 1:
+
+Input: n = 00000010100101000001111010011100
+Output:    964176192 (00111001011110000010100101000000)
+Explanation: The input binary string 00000010100101000001111010011100 represents the unsigned integer 43261596, so return 964176192 which its binary representation is 00111001011110000010100101000000.
+Example 2:
+
+Input: n = 11111111111111111111111111111101
+Output:   3221225471 (10111111111111111111111111111111)
+Explanation: The input binary string 11111111111111111111111111111101 represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is 10111111111111111111111111111111.
+public class Solution {
+    // you need treat n as an unsigned value
+    public int reverseBits(int n) {
+        int r=0;
+        int i;
+        for(i=0;i<=31;i++){
+            r=r<<1;
+            if((n&1)==1){
+                r=r|1;
+            }
+            n=n>>1;
+        }
+        return r;
+    }
+}
+------------------------------------------------------------------
+693. Binary Number with Alternating Bits
+Easy
+
+1314
+
+110
+
+Add to List
+
+Share
+Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.
+
+ 
+
+Example 1:
+
+Input: n = 5
+Output: true
+Explanation: The binary representation of 5 is: 101
+Example 2:
+
+Input: n = 7
+Output: false
+Explanation: The binary representation of 7 is: 111.
+Example 3:
+
+Input: n = 11
+Output: false
+Explanation: The binary representation of 11 is: 1011.
+class Solution {
+    public boolean hasAlternatingBits(int n) {
+        String a=Integer.toBinaryString(n);
+        for(int i=1;i<a.length();i++){
+            if(a.charAt(i)==a.charAt(i-1))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+or
+class Solution {
+    public boolean hasAlternatingBits(int n) {
+        int a,b;
+        while(n!=0){
+            a=n&1;
+            n=n>>1;
+            b=n&1;
+            if(a==b){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
   
 
   
