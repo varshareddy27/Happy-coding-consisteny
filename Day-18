@@ -1,0 +1,116 @@
+1-1-24
+Integer.bitCount();
+returns the no of 1 bits
+   int p=2;
+        int a=Integer.bitCount(p);
+        System.out.print(a);
+          o/p-1
+          leetcode 461
+          The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+Given two integers x and y, return the Hamming distance between them.
+Example 1:
+Input: x = 1, y = 4
+Output: 2
+Explanation:
+1   (0 0 0 1)
+4   (0 1 0 0)
+       ↑   ↑
+The above arrows point to positions where the corresponding bits are different.
+Example 2:
+
+Input: x = 3, y = 1
+Output: 1
+  class Solution {
+    public int hammingDistance(int x, int y) {   
+       return Integer.bitCount(x^y);
+}
+}
+or
+  class Solution {
+    public int hammingDistance(int x, int y) {
+        int a=x^y;
+        int c=0;
+        String b=Integer.toBinaryString(a);
+        for(int i=0;i<b.length();i++){
+            if(b.charAt(i)=='1'){
+                c++;
+            }
+        }
+        return c;
+    }
+}
+--------------------------------------------------
+  342. Power of Four
+Given an integer n, return true if it is a power of four. Otherwise, return false.
+An integer n is a power of four, if there exists an integer x such that n == 4x.
+Example 1:
+Input: n = 16
+Output: true
+Example 2:
+Input: n = 5
+Output: false
+Example 3:
+Input: n = 1
+Output: true
+  class Solution {
+    public boolean isPowerOfFour(int n) {
+        int a;
+        for(int i=0;i<=15;i++){
+            a=(int)Math.pow(4,i);
+            if(n==a){
+                return true;
+            }
+          if(a>n){
+                return false;//optional
+            }
+        }
+        return false;
+    }
+} or
+  class Solution {
+    public boolean isPowerOfFour(int n) {
+        if((n&(n-1))==0){
+            if((n-1)%3==0){
+                return true;
+            }
+        }
+           return false;
+    }
+}
+---------------------------------
+  program to convert given to octal,hexadecimal uing bit manipulation
+    import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        int n = 15; // Replace this with your desired decimal number
+        String s = "";
+        while (n > 0) {
+            int m = n & 7;
+            s = m + s;
+            n = n >>> 3;
+        }
+        System.out.print("Octal representation: " + s);
+    }
+}
+or
+  ----------------------------------
+  unset all the even given bits
+  tc:-
+    n=23
+    21
+    import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int m=n&0x55555555;
+		System.out.print(m);
+	}
+}
+----------------------------------
+  
+  
+
+  
+  
