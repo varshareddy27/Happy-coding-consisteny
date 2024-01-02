@@ -1,0 +1,77 @@
+Day-19
+2-1-24
+Aptitude(percentages & profit and loss intro)
+2595. Number of Even and Odd Bits
+You are given a positive integer n.
+Let even denote the number of even indices in the binary representation of n (0-indexed) with value 1.
+Let odd denote the number of odd indices in the binary representation of n (0-indexed) with value 1.
+Return an integer array answer where answer = [even, odd].
+Example 1:
+Input: n = 17
+Output: [2,0]
+Explanation: The binary representation of 17 is 10001. 
+It contains 1 on the 0th and 4th indices. 
+There are 2 even and 0 odd indices.
+Example 2:
+Input: n = 2
+Output: [0,1]
+Explanation: The binary representation of 2 is 10.
+It contains 1 on the 1st index. 
+There are 0 even and 1 odd indices.
+class Solution {
+    public int[] evenOddBit(int n) {
+        int e=0,o=0,idx=0;
+        while(n!=0){
+            if(((n&1)==1) && idx%2==0){
+                e++;
+            }
+            else if((n&1)==1&&idx%2!=0){
+                o++;
+            }
+            n=n>>1;
+            idx++;
+        }
+        int a[]={e,o};
+        return a;
+    }
+}
+------------------------------------------------
+1342. Number of Steps to Reduce a Number to Zero
+Given an integer num, return the number of steps to reduce it to zero.
+In one step, if the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
+Example 1:
+Input: num = 14
+Output: 6
+Explanation: 
+Step 1) 14 is even; divide by 2 and obtain 7. 
+Step 2) 7 is odd; subtract 1 and obtain 6.
+Step 3) 6 is even; divide by 2 and obtain 3. 
+Step 4) 3 is odd; subtract 1 and obtain 2. 
+Step 5) 2 is even; divide by 2 and obtain 1. 
+Step 6) 1 is odd; subtract 1 and obtain 0.
+Example 2:
+Input: num = 8
+Output: 4
+Explanation: 
+Step 1) 8 is even; divide by 2 and obtain 4. 
+Step 2) 4 is even; divide by 2 and obtain 2. 
+Step 3) 2 is even; divide by 2 and obtain 1. 
+Step 4) 1 is odd; subtract 1 and obtain 0.
+class Solution {
+    public int numberOfSteps(int num) {
+        int c=0;
+        while(num!=0){
+            if(num%2==0){
+                num=num/2;
+            }
+            else{
+                num=num-1;
+            }
+            c++;
+        }
+        return c;
+    }
+}
+------------------------------------------------------------------------------------------------
+
+
