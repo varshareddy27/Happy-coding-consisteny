@@ -1,0 +1,470 @@
+Strings leetcode
+1678. Goal Parser Interpretation
+You own a Goal Parser that can interpret a string command. The command consists of an alphabet of "G", "()" and/or "(al)" in some order. The Goal Parser will interpret "G" as the string "G", "()" as the string "o", and "(al)" as the string "al". The interpreted strings are then concatenated in the original order.
+Given the string command, return the Goal Parser's interpretation of command.
+Example 1:
+Input: command = "G()(al)"
+Output: "Goal"
+Explanation: The Goal Parser interprets the command as follows:
+G -> G
+() -> o
+(al) -> al
+The final concatenated result is "Goal".
+Example 2:
+Input: command = "G()()()()(al)"
+Output: "Gooooal"
+class Solution {
+    public String interpret(String command) {
+        String s;
+        
+            command=command.replace("()","o");
+            command=command.replace("(al)","al");
+        
+        return command;
+    }
+}
+---------------------------------------------------
+chec
+class Solution {
+    public List<Integer> findWordsContaining(String[] words, char x) {
+        List<Integer> list = new ArrayList<>();
+        for(int i=0; i<words.length; i++) {
+            for(int j=0; j<words[i].length(); j++) {
+                if(words[i].charAt(j)==x) {
+                    list.add(i);
+                    break;
+                }
+            }
+        }
+        return list;
+    }
+}
+-----------------
+2047. Number of Valid Words in a Sentence
+A sentence consists of lowercase letters ('a' to 'z'), digits ('0' to '9'), hyphens ('-'), punctuation marks ('!', '.', and ','), and spaces (' ') only. Each sentence can be broken down into one or more tokens separated by one or more spaces ' '.
+A token is a valid word if all three of the following are true:
+It only contains lowercase letters, hyphens, and/or punctuation (no digits).
+There is at most one hyphen '-'. If present, it must be surrounded by lowercase characters ("a-b" is valid, but "-ab" and "ab-" are not valid).
+There is at most one punctuation mark. If present, it must be at the end of the token ("ab,", "cd!", and "." are valid, but "a!b" and "c.," are not valid).
+Examples of valid words include "a-b.", "afad", "ba-c", "a!", and "!".
+Given a string sentence, return the number of valid words in sentence.
+Example 1:
+Input: sentence = "cat and  dog"
+Output: 3
+Explanation: The valid words in the sentence are "cat", "and", and "dog".
+Example 2:
+Input: sentence = "!this  1-s b8d!"
+Output: 0
+Explanation: There are no valid words in the sentence.
+"!this" is invalid because it starts with a punctuation mark.
+"1-s" and "b8d" are invalid because they contain digits.
+Example 3:
+Input: sentence = "alice and  bob are playing stone-game10"
+Output: 5
+Explanation: The valid words in the sentence are "alice", "and", "bob", "are", and "playing".
+"stone-game10" is invalid because it contains digits.
+Constraints:
+1 <= sentence.length <= 1000
+sentence only contains lowercase English letters, digits, ' ', '-', '!', '.', and ','.
+There will be at least 1 token.
+ans:-
+using regex to check if string matches the required condition.
+"^([a-z]+(-?[a-z]+)?)?(!|\.|,)?$" -> this is the primary regex and was constructed as required for the question. Below you can find what the symbols signify:
+^ -> starts with
+[a-z] -> includes occurence of lowercase letters
++ -> one or more
+? -> zero or one
+( ) -> used for grouping
+| -> or
+$ -> ends with
+so, parts of the above regex:
+
+[a-z]+ -> one or more lower case english letters
+-? -> zero or one hyphen
+(!|\.|,)? -> zero or one of '!', '.' (need to use \. for period) and ','. Could have also used [!\.,]?
+"[^0-9]+" -> this regex indicates that the string cannot have digits. Used this with the above as I found that the primary regex (above) did not weed out digits for some reason. If anyone knows or figures out why, please comment.
+
+"\s+" -> using this regex to split -> covers one or more spaces as the criteria
+class Solution {
+    public int countValidWords(String sentence) {
+        String regex = "^([a-z]+(-?[a-z]+)?)?(!|\\.|,)?$";
+        String r2 = "[^0-9]+";
+        String[] arr = sentence.split("\\s+");
+        int ans = 0;
+        for(String s: arr)
+        {
+            if(s.matches(regex) && s.matches(r2))
+            {
+                ans++;
+                //System.out.println(s);
+            }
+        }
+        return ans;
+    }
+}
+----------------------------
+1662. Check If Two String Arrays are Equivalent
+Easy
+
+2868
+
+198
+
+Add to List
+
+Share
+Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
+
+A string is represented by an array if the array elements concatenated in order forms the string.
+
+ 
+
+Example 1:
+
+Input: word1 = ["ab", "c"], word2 = ["a", "bc"]
+Output: true
+Explanation:
+word1 represents string "ab" + "c" -> "abc"
+word2 represents string "a" + "bc" -> "abc"
+The strings are the same, so return true.
+Example 2:
+
+Input: word1 = ["a", "cb"], word2 = ["ab", "c"]
+Output: false
+Example 3:
+
+Input: word1  = ["abc", "d", "defg"], word2 = ["abcddefg"]
+Output: true
+ 
+
+Constraints:
+
+1 <= word1.length, word2.length <= 103
+1 <= word1[i].length, word2[i].length <= 103
+1 <= sum(word1[i].length), sum(word2[i].length) <= 103
+word1[i] and word2[i] consist of lowercase letters.
+class Solution {
+    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        String r1="",r2="";
+       for(int i=0;i<word1.length;i++){
+           r1=r1+String.valueOf(word1[i]);
+       }
+        for(int i=0;i<word2.length;i++){
+           r2=r2+String.valueOf(word2[i]);
+       }
+        if(r1.equals(r2)){
+            return true;
+        }
+        return false;
+    }
+}
+--------------------------------
+1528. Shuffle String
+Easy
+
+2643
+
+488
+
+Add to List
+
+Share
+You are given a string s and an integer array indices of the same length. The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
+
+Return the shuffled string.
+
+ 
+
+Example 1:
+
+
+Input: s = "codeleet", indices = [4,5,6,7,0,2,1,3]
+Output: "leetcode"
+Explanation: As shown, "codeleet" becomes "leetcode" after shuffling.
+Example 2:
+
+Input: s = "abc", indices = [0,1,2]
+Output: "abc"
+Explanation: After shuffling, each character remains in its position.
+class Solution {
+    public String restoreString(String s, int[] indices) {
+        char a[]=s.toCharArray();
+        char b[]=new char[a.length];
+        int h;
+        for(int i=0;i<a.length;i++){
+            h=indices[i];
+            b[h]=a[i];
+        }
+        String r="";
+        for(int j=0;j<b.length;j++){
+            r=r+b[j];
+        }
+        return r;
+    }
+}
+------------------------------------
+344. Reverse String
+Easy
+
+8159
+
+1143
+
+Add to List
+
+Share
+Write a function that reverses a string. The input string is given as an array of characters s.
+
+You must do this by modifying the input array in-place with O(1) extra memory.
+
+ 
+
+Example 1:
+
+Input: s = ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+Example 2:
+Input: s = ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
+class Solution {
+    public void reverseString(char[] s) {
+        int k=s.length-1;
+        char t;
+        for(int i=0;i<s.length/2;i++){
+            t=s[i];
+            s[i]=s[k];
+            s[k--]=t;
+        }
+    }
+}
+-------------------------------------
+2733. Neither Minimum nor Maximum
+Easy
+
+308
+
+15
+
+Add to List
+
+Share
+Given an integer array nums containing distinct positive integers, find and return any number from the array that is neither the minimum nor the maximum value in the array, or -1 if there is no such number.
+
+Return the selected integer.
+
+ 
+
+Example 1:
+
+Input: nums = [3,2,1,4]
+Output: 2
+Explanation: In this example, the minimum value is 1 and the maximum value is 4. Therefore, either 2 or 3 can be valid answers.
+Example 2:
+
+Input: nums = [1,2]
+Output: -1
+Explanation: Since there is no number in nums that is neither the maximum nor the minimum, we cannot select a number that satisfies the given condition. Therefore, there is no answer.
+Example 3:
+
+Input: nums = [2,1,3]
+Output: 2
+Explanation: Since 2 is neither the maximum nor the minimum value in nums, it is the only valid answer. 
+class Solution {
+    public int findNonMinOrMax(int[] nums) {
+        int max=0,min=0;
+        for(int i=0;i<nums.length;i++){
+            max=Math.max(max,nums[i]);
+            min=Math.min(min,nums[i]);
+        }
+        for(int i=0;i<nums.length;i++){
+            if(max==nums[i] ||min==nums[i]){
+                nums[i]=0;
+            }
+        }
+        if(nums.length==2 ||nums.length<=2){
+            return -1;
+        }
+        Arrays.sort(nums);
+        int h=nums.length-1;
+        return nums[h];
+    }
+}
+-----------------------------------------------
+367. Valid Perfect Square
+Easy
+
+4085
+
+296
+
+Add to List
+
+Share
+Given a positive integer num, return true if num is a perfect square or false otherwise.
+
+A perfect square is an integer that is the square of an integer. In other words, it is the product of some integer with itself.
+
+You must not use any built-in library function, such as sqrt.
+
+ 
+
+Example 1:
+
+Input: num = 16
+Output: true
+Explanation: We return true because 4 * 4 = 16 and 4 is an integer.
+Example 2:
+
+Input: num = 14
+Output: false
+Explanation: We return false because 3.742 * 3.742 = 14 and 3.742 is not an integer.
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        int f=(int)Math.sqrt(num);
+        if(f*f==num){
+            return true;
+        }return false;
+    }
+}
+----------------------------------
+2520. Count the Digits That Divide a Number
+Easy
+
+460
+
+29
+
+Add to List
+
+Share
+Given an integer num, return the number of digits in num that divide num.
+
+An integer val divides nums if nums % val == 0.
+
+ 
+
+Example 1:
+
+Input: num = 7
+Output: 1
+Explanation: 7 divides itself, hence the answer is 1.
+class Solution {
+    public int countDigits(int num) {
+        int n=num;
+        int c=0,r;
+        int d=(int)Math.log10(num)+1;
+        while(num>0){
+            r=num%10;
+            if(n%r==0){
+                c++;
+            }
+            num/=10;
+        }
+        return c;
+    }
+}
+------------------------
+2006. Count Number of Pairs With Absolute Difference K
+Easy
+
+1558
+
+38
+
+Add to List
+
+Share
+Given an integer array nums and an integer k, return the number of pairs (i, j) where i < j such that |nums[i] - nums[j]| == k.
+
+The value of |x| is defined as:
+
+x if x >= 0.
+-x if x < 0.
+ 
+
+Example 1:
+
+Input: nums = [1,2,2,1], k = 1
+Output: 4
+Explanation: The pairs with an absolute difference of 1 are:
+- [1,2,2,1]
+- [1,2,2,1]
+- [1,2,2,1]
+- [1,2,2,1]
+Example 2:
+
+Input: nums = [1,3], k = 3
+Output: 0
+Explanation: There are no pairs with an absolute difference of 3.
+Example 3:
+
+Input: nums = [3,2,1,5,4], k = 2
+Output: 3
+Explanation: The pairs with an absolute difference of 2 are:
+- [3,2,1,5,4]
+- [3,2,1,5,4]
+- [3,2,1,5,4]
+class Solution {
+    public int countKDifference(int[] nums, int k) {
+        int c=0;
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if((Math.abs(nums[i]-nums[j]))==k){
+                    c++;
+                }
+            }
+        }return c;
+    }
+}
+-------------------------------------
+2535. Difference Between Element Sum and Digit Sum of an Array
+Easy
+
+644
+
+16
+
+Add to List
+
+Share
+You are given a positive integer array nums.
+
+The element sum is the sum of all the elements in nums.
+The digit sum is the sum of all the digits (not necessarily distinct) that appear in nums.
+Return the absolute difference between the element sum and digit sum of nums.
+
+Note that the absolute difference between two integers x and y is defined as |x - y|.
+
+ 
+
+Example 1:
+
+Input: nums = [1,15,6,3]
+Output: 9
+Explanation: 
+The element sum of nums is 1 + 15 + 6 + 3 = 25.
+The digit sum of nums is 1 + 1 + 5 + 6 + 3 = 16.
+The absolute difference between the element sum and digit sum is |25 - 16| = 9.
+Example 2:
+
+Input: nums = [1,2,3,4]
+Output: 0
+Explanation:
+The element sum of nums is 1 + 2 + 3 + 4 = 10.
+The digit sum of nums is 1 + 2 + 3 + 4 = 10.
+The absolute difference between the element sum and digit sum is |10 - 10| = 0.
+class Solution {
+    public int differenceOfSum(int[] nums) {
+        int s=0,k=0,n;
+        for(int i=0;i<nums.length;i++){
+            s=s+nums[i];
+            n=nums[i];
+            while(n!=0){
+                int r=n%10;
+                k=k+r;
+                n/=10;
+            }
+        }
+        return Math.abs(s-k);
+    }
+}
