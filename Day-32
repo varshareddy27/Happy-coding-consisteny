@@ -1,1 +1,112 @@
+1716. Calculate Money in Leetcode Bank
+Easy
+1413
+Hercy wants to save money for his first car. He puts money in the Leetcode bank every day.
+He starts by putting in $1 on Monday, the first day. Every day from Tuesday to Sunday, he will put in $1 more than the day before. On every subsequent Monday, he will put in $1 more than the previous Monday.
+Given n, return the total amount of money he will have in the Leetcode bank at the end of the nth day.
+Example 1:
+Input: n = 4
+Output: 10
+Explanation: After the 4th day, the total is 1 + 2 + 3 + 4 = 10.
+Example 2:
 
+Input: n = 10
+Output: 37
+Explanation: After the 10th day, the total is (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4) = 37. Notice that on the 2nd Monday, Hercy only puts in $2.
+Example 3:
+
+Input: n = 20
+Output: 96
+Explanation: After the 20th day, the total is (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4 + 5 + 6 + 7 + 8) + (3 + 4 + 5 + 6 + 7 + 8) = 96.
+class Solution {
+    public int totalMoney(int n) {
+       int s=0,k=1,l=0;
+        for(int i=1;i<=n;i++){
+            if(i<=7){
+                s+=i;
+            }
+            else{
+                if(i%7==1){ 
+                    l=++k;
+                    s+=l;
+                }
+                else{
+                    s+=++l;
+                }
+            }
+        }
+        return s;
+    }
+}
+-------------------------------------------------------------------------------
+367. Valid Perfect Square
+Easy
+
+4158
+
+302
+
+Add to List
+
+Share
+Given a positive integer num, return true if num is a perfect square or false otherwise.
+
+A perfect square is an integer that is the square of an integer. In other words, it is the product of some integer with itself.
+
+You must not use any built-in library function, such as sqrt.
+
+ 
+
+Example 1:
+
+Input: num = 16
+Output: true
+Explanation: We return true because 4 * 4 = 16 and 4 is an integer.
+Example 2:
+
+Input: num = 14
+Output: false
+Explanation: We return false because 3.742 * 3.742 = 14 and 3.742 is not an integer.
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        int p=(int)Math.sqrt(num);
+        if(p*p==num){
+            return true;
+        }
+        
+            return false;
+        
+    }
+}
+----------------------------------------
+2520. Count the Digits That Divide a Number
+Easy
+Given an integer num, return the number of digits in num that divide num.
+An integer val divides nums if nums % val == 0.
+Example 1:
+Input: num = 7
+Output: 1
+Explanation: 7 divides itself, hence the answer is 1.
+Example 2:
+Input: num = 121
+Output: 2
+Explanation: 121 is divisible by 1, but not 2. Since 1 occurs twice as a digit, we return 2.
+Example 3:
+Input: num = 1248
+Output: 4
+Explanation: 1248 is divisible by all of its digits, hence the answer is 4.
+class Solution {
+    public int countDigits(int num) {
+        int n=num;
+        int c=0;
+        while(num!=0){
+            int r=num%10;
+            if(n%r==0 && r!=0){
+                c++;
+            }
+            num/=10;
+        }
+        return c;
+    }
+}
+-----------------------------------------------
