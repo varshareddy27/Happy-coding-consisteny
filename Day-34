@@ -1,1 +1,58 @@
+Recurison by st
+PRINTING NAME N TIMES
+import java.util.*;
+public class Main
+{
+    public static void fun(int i,int n){
+    if(i>n){
+        return;
+    }
+    System.out.println("Varsha");
+    fun(i+1,n);
+}
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+		fun(1,n);
+	}
+}
+--------------------------------------------
+PRINTING NUMBER FROM N TO 1
+import java.util.*;
+public class Main
+{
+    public static void fun(int n){
+    if(n==0){
+        return;
+    }
+    System.out.println(n);
+    fun(n-1);
+}
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+		fun(n);
+	}
+}
+
+=------------------------------------------
+import java.util.*;
+public class test
+{
+    public static void add(int n,int s){
+        if (n==0){
+            System.out.print("sum :"+s);
+            return;
+        }
+        s+=n;
+        //print(s);
+        add(n-1,s);
+        }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        add(n,0);
+    }
+}
+
 
