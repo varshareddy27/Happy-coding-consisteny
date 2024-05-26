@@ -1,1 +1,48 @@
+spiral matrix 
+ 1 2 3 4
+12 13 14 5
+11 16 15 6
+10 9 8 7
 
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+   Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int r[][]=new int [n][n];
+        int val=1;
+        int r1=0,r2=n-1,c1=0,c2=n-1;
+        while(r1<=r2 && c1<=c2){
+            for(int i=c1;i<=c2;i++){
+                r[r1][i]=val++;
+            }
+            for(int i=r1+1;i<=r2;i++){
+                r[i][c2]=val++;
+            }
+            if(r1<r2 && c1<c2){
+                for(int i=c2-1;i>c1;i--){
+                    r[r2][i]=val++;
+                }
+                for(int i=r2;i>r1;i--){
+                    r[i][c1]=val++;
+                }
+            }
+            r1++;
+            c2--;
+            r2--;
+            c1++;
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(r[i][j]+" ");
+            }
+            System.out.println();
+        }
+        
+        
+    }
+}
